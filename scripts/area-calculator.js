@@ -18,7 +18,7 @@ function calculatorTriangleArea() {
 
 
 function calculatorRectangleArea() {
-    
+
     const widthField = document.getElementById('rectangle-width');
     const widthValueText = widthField.value;
     const width = parseFloat(widthValueText);
@@ -31,9 +31,43 @@ function calculatorRectangleArea() {
 
     const area = width * length;
     const rectangleAreaSpan = document.getElementById('rectangle-area');
-    rectangleAreaSpan.innerText = area;
-
-  
+    rectangleAreaSpan.innerText = area;    
 }
 
+function calculatorParallelogramArea(){
+    const base = getInputValue('parallelogram-base')
+    console.log(base);
+    const height = getInputValue('parallelogram-height')
+    console.log(height);
+
+    const area = base * height;
+    setElementInnerText('parallelogram-area', area)
+    
+}
+
+function calculatorEllipseArea(){
+    const majorRadius = getInputValue('ellipse-mejor-radious') 
+    const minorRadius = getInputValue('ellipse-minor-radius')  
+    const area = Math.PI * majorRadius * minorRadius;
+    setElementInnerText('ellipse-area', area)
+}
+
+
+
+
+
+
+
+
+    function getInputValue(fieldID) {
+      const inputField = document.getElementById(fieldID)
+      const inputValueText = inputField.value; 
+      const value = parseFloat(inputValueText);
+      return value;
+    }
+
+    function setElementInnerText(elementId, area){
+        const element = document.getElementById(elementId)
+            element.innerText = area;
+    } 
 
