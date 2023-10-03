@@ -29,6 +29,12 @@ function calculatorRectangleArea() {
     const length = parseFloat(lengthValueText);
     console.log(length);
 
+
+    if (isNaN(width) || isNaN(length)) {
+        alert('please input e valid number');
+        return;
+    }
+
     const area = width * length;
     const rectangleAreaSpan = document.getElementById('rectangle-area');
     rectangleAreaSpan.innerText = area;    
@@ -41,12 +47,16 @@ function calculatorParallelogramArea(){
     console.log(height);
 
     const area = base * height;
-    setElementInnerText('parallelogram-area', area)
+    const areaTwoDecimal = area.toFixed(2)
+    setElementInnerText('parallelogram-area', areaTwoDecimal)
+
+    addToCalculationEntry('Parallelogram', area)
+
     
 }
 
 function calculatorEllipseArea(){
-    const majorRadius = getInputValue('ellipse-mejor-radious') 
+    const majorRadius = getInputValue('ellipse-89cvf tmejor-radious') 
     const minorRadius = getInputValue('ellipse-minor-radius')  
     const area = Math.PI * majorRadius * minorRadius;
     setElementInnerText('ellipse-area', area)
@@ -55,7 +65,7 @@ function calculatorEllipseArea(){
 
 
 
-
+ 
 
 
 
@@ -71,3 +81,17 @@ function calculatorEllipseArea(){
             element.innerText = area;
     } 
 
+
+
+    function addToCalculationEntry(areaType , area){
+            console.log(areaType+ ' '+ area);
+        const calculationEntry = document.getElementById('calculation-entry')
+        const count = calculationEntry.childElementCount;
+        const p = document.createElement('p');
+        p.classList.add('my-4')
+        p.innerHTML = `
+          ${count +1}.  ${areaType}  ${area} cm<SUP>2</SUP>
+        <button class="btn btn-success">Convert</button>
+        `;
+        calculationEntry.appendChild(p)
+    }
